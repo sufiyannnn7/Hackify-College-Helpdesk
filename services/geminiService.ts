@@ -3,11 +3,11 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AIAnalysis, Priority } from "../types";
 
 export const analyzeComplaint = async (description: string): Promise<AIAnalysis> => {
-  // Access pre-configured environment variable
+  // process.env.API_KEY is injected by Vite during build
   const apiKey = process.env.API_KEY;
   
   if (!apiKey) {
-    console.warn("API key not found, using default classification.");
+    console.warn("AI Analysis: API key not found in environment. Please set API_KEY in Vercel settings.");
     return {
       category: "General",
       priority: Priority.MEDIUM,
