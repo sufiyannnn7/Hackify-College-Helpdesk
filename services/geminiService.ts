@@ -3,7 +3,9 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AIAnalysis, Priority } from "../types";
 
 export const analyzeComplaint = async (description: string): Promise<AIAnalysis> => {
+  // Access pre-configured environment variable
   const apiKey = process.env.API_KEY;
+  
   if (!apiKey) {
     console.warn("API key not found, using default classification.");
     return {
